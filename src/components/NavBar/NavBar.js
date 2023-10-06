@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import logo from './assets/next_logo.png';
 import CartWidget from '../CartWidget/CartWidget';
 
@@ -7,20 +9,20 @@ const NavBar = () => {
             <div className="uk-container">
                 <div data-uk-navbar>
                     <div className="uk-navbar-left">
-                        <a className="uk-logo" href="">
+                        <Link className="uk-logo" to={`/`}>
                             <img src={logo} width="125px" height="40px" alt="Tienda Next" className="uk-padding-small"></img>
-                        </a>
+                        </Link>
                     </div>
                     <div className="uk-navbar-center">
                         <ul className="uk-navbar-nav">
                             <li>
-                                <a href="">Inicio</a>
+                                <NavLink to={`/`} className={({ isActive }) => isActive ? "uk-text-bolder" : ""}>Inicio</NavLink>
                             </li>
                             <li>
-                                <a href="">Componentes</a>
+                                <NavLink to={`/categoria/componentes`} className={({ isActive, isPending }) => isActive ? "uk-text-bolder" : ""}>Componentes</NavLink>
                             </li>
                             <li>
-                                <a href="">Periféricos</a>
+                                <NavLink to={`/categoria/perifericos`} className={({ isActive, isPending }) => isActive ? "uk-text-bolder" : ""}>Periféricos</NavLink>
                             </li>
                         </ul>
                     </div>
