@@ -19,10 +19,10 @@ const NavBar = () => {
                                 <NavLink to={`/`} className={({ isActive }) => isActive ? "uk-text-bolder" : ""}>Inicio</NavLink>
                             </li>
                             <li>
-                                <NavLink to={`/categoria/componentes`} className={({ isActive, isPending }) => isActive ? "uk-text-bolder" : ""}>Componentes</NavLink>
+                                <NavLink to={`/categoria/componentes`} className={({ isActive }) => isActive ? "uk-text-bolder" : ""}>Componentes</NavLink>
                             </li>
                             <li>
-                                <NavLink to={`/categoria/perifericos`} className={({ isActive, isPending }) => isActive ? "uk-text-bolder" : ""}>Periféricos</NavLink>
+                                <NavLink to={`/categoria/perifericos`} className={({ isActive }) => isActive ? "uk-text-bolder" : ""}>Periféricos</NavLink>
                             </li>
                         </ul>
                     </div>

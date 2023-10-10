@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
+import productosJSON from '../../products.json';
 
 const ItemList = ({category}) => {
     const [products, setProducts] = useState([])
@@ -9,7 +10,6 @@ const ItemList = ({category}) => {
         setLoading(true)
         // Simulamos un retraso de un segundo y medio.
         setTimeout(() => {
-            const productosJSON = require("../../products.json")
             const filterProducts = category ? productosJSON.productos.filter((item) => item.categoria === category) : productosJSON.productos
             setProducts(filterProducts)
             setLoading(false)

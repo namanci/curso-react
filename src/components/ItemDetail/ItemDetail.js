@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
+import productosJSON from '../../products.json';
 
 const ItemDetail = () => {
     const { id } = useParams()
@@ -8,7 +9,6 @@ const ItemDetail = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            const productosJSON = require("../../products.json")
             const foundProduct = productosJSON.productos.find(
                 (item) => item.id === parseInt(id, 10)
             )
