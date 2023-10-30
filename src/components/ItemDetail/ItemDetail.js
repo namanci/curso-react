@@ -46,7 +46,7 @@ const ItemDetail = () => {
                         {
                             quantityAdded > 0 ? (
                                 <div className="uk-flex uk-flex-center">
-                                    <Link to="/cart" className="uk-button uk-button-default uk-button-large">Finalizar compra</Link>
+                                    <Link to="/cart" className="uk-button uk-button-default uk-button-large">Ver carrito</Link>
                                 </div>
                             ) : (
                                 <ItemCount initial={1} stock={25} onAdd={handleAdded}/>
