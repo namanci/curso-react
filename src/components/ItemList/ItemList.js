@@ -1,19 +1,33 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
-import productosJSON from '../../products.json';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import { db } from '../../services/firebase/firebaseConfig';
 
-const ItemList = ({category}) => {
+const ItemList = ({ category }) => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+
         setLoading(true)
-        // Simulamos un retraso de un segundo y medio.
-        setTimeout(() => {
-            const filterProducts = category ? productosJSON.productos.filter((item) => item.categoria === category) : productosJSON.productos
-            setProducts(filterProducts)
-            setLoading(false)
-        }, 1500)
+
+        const collectionRef = collection(db, 'productos.next') // Referencia a la colección de Firestore.
+
+        const catQuery = category ? query(collectionRef, where('categoria', '==', category)) : collectionRef // Mediante una consulta, si recibimos una categoría filtramos los productos.
+
+        getDocs(catQuery) // Obtenemos los documentos.
+            .then((queryResponse) => {
+                const productsArray = []
+                queryResponse.forEach((doc) => {
+                    productsArray.push({ id: doc.id, ...doc.data() }) // "Pushamos" los documentos a un Array de productos.
+                })
+
+                setProducts(productsArray)
+                setLoading(false)
+            })
+            .catch((error) => {
+                console.error('Error al obtener productos: ', error)
+            })
     }, [category])
 
     return (
