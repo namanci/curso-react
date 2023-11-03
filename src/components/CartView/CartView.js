@@ -40,7 +40,7 @@ const CartView = ({title}) => {
                     <div className="uk-margin-top">
                         <h3>Total: US${getTotalPrice().toFixed(2)}</h3>
                         <div className="uk-flex uk-flex-around">
-                            <button className="uk-button uk-button-primary">Pagar</button>
+                            <Link to="/checkout" className="uk-button uk-button-primary">Pagar</Link>
                             <Link to="/" className="uk-button uk-button-default">Seguir comprando</Link>
                         </div>
                     </div>
